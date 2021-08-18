@@ -446,6 +446,15 @@
           "name": "serviceName"
         },
         {
+          "type": "SYMBOL",
+          "name": "serviceBody"
+        }
+      ]
+    },
+    "serviceBody": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "STRING",
           "value": "{"
         },
@@ -539,42 +548,46 @@
           "value": ")"
         },
         {
-          "type": "CHOICE",
+          "type": "SYMBOL",
+          "name": "rpcBody"
+        }
+      ]
+    },
+    "rpcBody": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
           "members": [
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "{"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SYMBOL",
-                        "name": "option"
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "emptyStatement"
-                      }
-                    ]
+              "type": "STRING",
+              "value": "{"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "option"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "emptyStatement"
                   }
-                },
-                {
-                  "type": "STRING",
-                  "value": "}"
-                }
-              ]
+                ]
+              }
             },
             {
               "type": "STRING",
-              "value": ";"
+              "value": "}"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ";"
         }
       ]
     },
@@ -693,6 +706,15 @@
           "type": "SYMBOL",
           "name": "oneofName"
         },
+        {
+          "type": "SYMBOL",
+          "name": "oneofBody"
+        }
+      ]
+    },
+    "oneofBody": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
           "value": "{"

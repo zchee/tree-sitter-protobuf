@@ -59,7 +59,8 @@ module.exports = grammar({
       ),
 
     // service
-    service: ($) => seq('service', $.serviceName, '{', repeat(choice($.option, $.rpc, $.emptyStatement)), '}'),
+    service: ($) => seq('service', $.serviceName, $.serviceBody),
+    serviceBody: ($) => seq('{', repeat(choice($.option, $.rpc, $.emptyStatement)), '}'),
     rpc: ($) =>
       seq(
         'rpc',
@@ -73,8 +74,9 @@ module.exports = grammar({
         optional('stream'),
         $.enumMessageType,
         ')',
-        choice(seq('{', repeat(choice($.option, $.emptyStatement)), '}'), ';')
+        $.rpcBody,
       ),
+    rpcBody: ($) => choice(seq('{', repeat(choice($.option, $.emptyStatement)), '}'), ';'),
 
     // field and inline option
     field: ($) =>
@@ -83,7 +85,8 @@ module.exports = grammar({
     fieldOption: ($) => seq($.optionName, '=', $.constant),
 
     // oneof
-    oneof: ($) => seq('oneof', $.oneofName, '{', repeat(choice($.option, $.oneofField, $.emptyStatement)), '}'),
+    oneof: ($) => seq('oneof', $.oneofName, $.oneofBody),
+    oneofBody: ($) => seq('{', repeat(choice($.option, $.oneofField, $.emptyStatement)), '}'),
     oneofField: ($) => seq($.type, $.fieldName, '=', $.fieldNumber, optional(seq('[', $.fieldOptions, ']')), ';'),
 
     // map

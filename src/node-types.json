@@ -503,15 +503,30 @@
       "required": true,
       "types": [
         {
+          "type": "oneofBody",
+          "named": true
+        },
+        {
+          "type": "oneofName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "oneofBody",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
           "type": "emptyStatement",
           "named": true
         },
         {
           "type": "oneofField",
-          "named": true
-        },
-        {
-          "type": "oneofName",
           "named": true
         },
         {
@@ -670,19 +685,34 @@
       "required": true,
       "types": [
         {
-          "type": "emptyStatement",
-          "named": true
-        },
-        {
           "type": "enumMessageType",
           "named": true
         },
         {
-          "type": "option",
+          "type": "rpcBody",
           "named": true
         },
         {
           "type": "rpcName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "rpcBody",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "emptyStatement",
+          "named": true
+        },
+        {
+          "type": "option",
           "named": true
         }
       ]
@@ -712,6 +742,25 @@
       "required": true,
       "types": [
         {
+          "type": "serviceBody",
+          "named": true
+        },
+        {
+          "type": "serviceName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "serviceBody",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
           "type": "emptyStatement",
           "named": true
         },
@@ -721,10 +770,6 @@
         },
         {
           "type": "rpc",
-          "named": true
-        },
-        {
-          "type": "serviceName",
           "named": true
         }
       ]
