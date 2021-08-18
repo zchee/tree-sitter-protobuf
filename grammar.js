@@ -4,7 +4,7 @@ module.exports = grammar({
   rules: {
     // top
     source_file: ($) =>
-      seq($.syntax, repeat(choice($.import, $.package, $.option, $.emptyStatement, $.enum, $.message, $.service))),
+      seq($.syntax, repeat(choice($.import, $.extend, $.package, $.option, $.emptyStatement, $.enum, $.message, $.service))),
     
     // comment
     comment: $ => token(choice(
@@ -21,6 +21,9 @@ module.exports = grammar({
 
     // syntax
     syntax: ($) => seq('syntax', '=', /"proto3"/, ';'),
+    
+    // extend
+    extend: ($) => seq('extend', $.extendName, $.messageBody),
 
     // package
     package: ($) => seq('package', $.fullIdent, ';'),
@@ -37,7 +40,7 @@ module.exports = grammar({
     enumBody: ($) => seq('{', repeat(choice($.option, $.enumField, $.emptyStatement)), '}'),
     enumField: ($) =>
       seq(
-        $.ident,
+        $.enumVariantName,
         '=',
         optional('-'),
         $.intLit,
@@ -176,10 +179,12 @@ module.exports = grammar({
     // identifier
     ident: ($) => /[a-zA-Z_]\w*/,
     fullIdent: ($) => seq($.ident, repeat(seq('.', $.ident))),
+    extendName: ($) => $.fullIdent,
     messageName: ($) => $.ident,
     mapName: ($) => $.ident,
     enumName: ($) => $.ident,
     fieldName: ($) => $.ident,
+    enumVariantName: ($) => $.ident,
     oneofName: ($) => $.ident,
     serviceName: ($) => $.ident,
     rpcName: ($) => $.ident,

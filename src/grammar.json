@@ -19,6 +19,10 @@
               },
               {
                 "type": "SYMBOL",
+                "name": "extend"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "package"
               },
               {
@@ -114,6 +118,23 @@
         {
           "type": "STRING",
           "value": ";"
+        }
+      ]
+    },
+    "extend": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "extend"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "extendName"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "messageBody"
         }
       ]
     },
@@ -257,7 +278,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "ident"
+          "name": "enumVariantName"
         },
         {
           "type": "STRING",
@@ -1260,6 +1281,10 @@
         }
       ]
     },
+    "extendName": {
+      "type": "SYMBOL",
+      "name": "fullIdent"
+    },
     "messageName": {
       "type": "SYMBOL",
       "name": "ident"
@@ -1273,6 +1298,10 @@
       "name": "ident"
     },
     "fieldName": {
+      "type": "SYMBOL",
+      "name": "ident"
+    },
+    "enumVariantName": {
       "type": "SYMBOL",
       "name": "ident"
     },
