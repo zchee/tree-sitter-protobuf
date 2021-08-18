@@ -5,9 +5,19 @@ module.exports = grammar({
     // top
     source_file: ($) =>
       seq($.syntax, repeat(choice($.import, $.package, $.option, $.emptyStatement, $.enum, $.message, $.service))),
-
+    
     // comment
-    comment: ($) => token(seq('//', /.*/)),
+    comment: $ => token(choice(
+      seq('//', /.*/),
+      seq(
+        "/*",
+        repeat(choice(
+          /[^*]/,
+          /\*[^/]/,
+        )),
+        "*/"
+      )
+    )),
 
     // syntax
     syntax: ($) => seq('syntax', '=', /"proto3"/, ';'),
