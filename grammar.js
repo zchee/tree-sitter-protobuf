@@ -80,7 +80,7 @@ module.exports = grammar({
 
     // field and inline option
     field: ($) =>
-      seq(optional('repeated'), $.type, $.fieldName, '=', $.fieldNumber, optional(seq('[', $.fieldOptions, ']')), ';'),
+      seq(optional('optional'), optional('repeated'), $.type, $.fieldName, '=', $.fieldNumber, optional(seq('[', $.fieldOptions, ']')), ';'),
     fieldOptions: ($) => seq($.fieldOption, repeat(seq(',', $.fieldOption))),
     fieldOption: ($) => seq($.optionName, '=', $.constant),
 

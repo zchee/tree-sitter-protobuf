@@ -1007,6 +1007,10 @@
     "named": false
   },
   {
+    "type": "optional",
+    "named": false
+  },
+  {
     "type": "package",
     "named": false
   },
