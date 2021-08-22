@@ -12,22 +12,27 @@
   "repeated"
   "reserved"
   "to"
+  "extend"
+  "optional"
 ] @keyword
 
 [
-  (key_type)
+  (keyType)
   (type)
-  (message_name)
-  (enum_name)
-  (service_name)
-  (rpc_name)
+  (messageName)
+  (enumName)
+  (serviceName)
+  (rpcName)
 ]@type
 
-(string) @string
+[
+  (strLit)
+  (syntaxValue)
+] @string
 
 [
-  (int_lit)
-  (float_lit)
+  (intLit)
+  (floatLit)
 ] @number
 
 [
