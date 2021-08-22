@@ -1,7 +1,7 @@
 {
   "name": "protobuf",
   "rules": {
-    "source_file": {
+    "sourceFile": {
       "type": "SEQ",
       "members": [
         {
@@ -112,14 +112,18 @@
           "value": "="
         },
         {
-          "type": "PATTERN",
-          "value": "\"proto3\""
+          "type": "SYMBOL",
+          "name": "syntaxValue"
         },
         {
           "type": "STRING",
           "value": ";"
         }
       ]
+    },
+    "syntaxValue": {
+      "type": "PATTERN",
+      "value": "\"proto3\""
     },
     "extend": {
       "type": "SEQ",

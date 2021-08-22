@@ -3,7 +3,7 @@ module.exports = grammar({
   extras: ($) => [$.comment, /\s/],
   rules: {
     // top
-    source_file: ($) =>
+    sourceFile: ($) =>
       seq($.syntax, repeat(choice($.import, $.extend, $.package, $.option, $.emptyStatement, $.enum, $.message, $.service))),
     
     // comment
@@ -20,7 +20,8 @@ module.exports = grammar({
     )),
 
     // syntax
-    syntax: ($) => seq('syntax', '=', /"proto3"/, ';'),
+    syntax: ($) => seq('syntax', '=', $.syntaxValue, ';'),
+    syntaxValue: ($) => /"proto3"/,
     
     // extend
     extend: ($) => seq('extend', $.extendName, $.messageBody),

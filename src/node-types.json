@@ -791,7 +791,7 @@
     }
   },
   {
-    "type": "source_file",
+    "type": "sourceFile",
     "named": true,
     "fields": {},
     "children": {
@@ -845,7 +845,17 @@
   {
     "type": "syntax",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "syntaxValue",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "type",
@@ -1061,6 +1071,10 @@
   {
     "type": "syntax",
     "named": false
+  },
+  {
+    "type": "syntaxValue",
+    "named": true
   },
   {
     "type": "to",
