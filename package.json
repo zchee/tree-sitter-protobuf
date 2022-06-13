@@ -2,19 +2,42 @@
   "name": "tree-sitter-protobuf",
   "version": "0.1.0",
   "description": "tree-sitter grammar for protocol buffer (proto3)",
-  "scripts": {
-    "test": "tree-sitter test",
-    "build": "tree-sitter generate && node-gyp build",
-    "build-wasm": "tree-sitter generate && tree-sitter build-wasm"
-  },
-  "author": "weak_ptr <weak_ptr@outlook.com>",
+  "author": "zchee <zchee.io@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "generate": "wireit",
+    "build": "wireit",
+    "build-wasm": "wireit",
+    "test": "wireit"
+  },
+  "wireit": {
+    "generate": {
+      "command": "tree-sitter generate"
+    },
+    "build": {
+      "command": "node-gyp configure && node-gyp build",
+      "dependencies": [
+        "generate"
+      ]
+    },
+    "build-wasm": {
+      "command": "tree-sitter build-wasm",
+      "dependencies": [
+        "generate"
+      ]
+    },
+    "test": {
+      "command": "tree-sitter test"
+    }
+  },
   "dependencies": {
-    "nan": "^2.14.2"
+    "nan": "^2"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.20.0"
+    "tree-sitter-cli": "*",
+    "wireit": "*"
   },
+  "main": "bindings/node",
   "tree-sitter": [
     {
       "scope": "source.proto",
@@ -22,6 +45,5 @@
         "proto"
       ]
     }
-  ],
-  "main": "bindings/node"
+  ]
 }
