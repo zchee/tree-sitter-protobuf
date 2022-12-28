@@ -31,11 +31,11 @@
     }
   },
   "dependencies": {
-    "nan": "^2"
+    "nan": "^2.17.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "*",
-    "wireit": "*"
+    "tree-sitter-cli": "^0.20",
+    "wireit": "^0"
   },
   "main": "bindings/node",
   "tree-sitter": [
